@@ -1,0 +1,11 @@
+[package]
+name = "kart-usd"
+version = "0.1.0"
+edition.workspace = true
+description = "USD ASCII (.usda) exporter for KartRider assets — catches up to oracle-local's USDA output"
+
+[dependencies]
+kart-fmt = { path = "../kart-fmt" }
+
+[lints]
+workspace = true

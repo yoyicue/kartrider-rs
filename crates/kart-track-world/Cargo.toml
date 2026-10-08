@@ -1,0 +1,34 @@
+[package]
+name = "kart-track-world"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+kart-fmt = { path = "../kart-fmt" }
+kart-rho = { path = "../kart-rho" }
+kart-physics = { path = "../kart-physics" }
+# W3: the shared live-world parity replay (`replay` module) consumes the same
+# spec JSON as the kart-physics `*_trace` examples. Optional so the pure-std
+# library surface (and the kart-autoprobe dependency tree) stays serde-free;
+# the kart-physics `serde` feature is additive and never leaks into the
+# library dependency surface beyond this feature.
+serde = { version = "1", features = ["derive"], optional = true }
+serde_json = { version = "1", features = ["float_roundtrip"], optional = true }
+
+[features]
+replay = ["dep:serde", "dep:serde_json", "kart-physics/serde"]
+
+# Kept as dev-dependencies so the crate's own tests/examples keep building
+# with the feature set they were written against.
+[dev-dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }
+kart-physics = { path = "../kart-physics", features = ["serde"] }
+
+[[example]]
+name = "live_world_trace"
+required-features = ["replay"]
+
+[lints]
+workspace = true

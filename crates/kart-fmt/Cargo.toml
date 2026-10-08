@@ -1,0 +1,10 @@
+[package]
+name = "kart-fmt"
+version = "0.1.0"
+edition.workspace = true
+description = "Clean-room parsers for KartRider .1s assets (raw models, animations)"
+
+[dependencies]
+
+[lints]
+workspace = true

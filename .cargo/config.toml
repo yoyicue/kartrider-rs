@@ -1,0 +1,9 @@
+[alias]
+# Cross-validate the clean-room parsers/exporter against the local C# + oracle
+# references (SKIPs when they are absent). See xtask/.
+xval = "run -p xtask --release --"
+xtask = "run -p xtask --release --"
+smoke = "run -p xtask --release -- smoke"
+audit-corpus = "run -p xtask --release -- audit-corpus"
+# Decode + parse every local aiPath/*.kap and validate (round-trip, markers, coords).
+kap = "run -p xtask --release -- kap"

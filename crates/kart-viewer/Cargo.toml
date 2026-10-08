@@ -1,0 +1,20 @@
+[package]
+name = "kart-viewer"
+version = "0.1.0"
+edition.workspace = true
+description = "Interactive winit + wgpu viewer for KartRider .1s assets (route A)"
+
+[[bin]]
+name = "kart-viewer"
+path = "src/main.rs"
+
+[dependencies]
+kart-render = { path = "../kart-render" }   # reusable Renderer + Scene (re-exports wgpu)
+kart-fmt = { path = "../kart-fmt" }
+kart-rho = { path = "../kart-rho" }          # KAP wrapper decode (Phase 2 overlay)
+winit = "0.30"
+glam = "0.29"
+pollster = "0.3"
+
+[lints]
+workspace = true

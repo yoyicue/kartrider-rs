@@ -1,0 +1,25 @@
+[package]
+name = "kart-wasm"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "WASM (wasm32-unknown-unknown) demo/gate boundary for kart-physics + kart-track-world (handoff docs/kart-physics-wasm-demo-handoff-2026-07-29.md W3)"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+kart-physics = { path = "../kart-physics", features = ["serde"] }
+kart-track-world = { path = "../kart-track-world", features = ["replay"] }
+# State/parameters JSON decode at the session boundary (same serde shapes as
+# the parity specs; float_roundtrip for correctly-rounded f64 parsing).
+serde_json = { version = "1", features = ["float_roundtrip"] }
+
+[dev-dependencies]
+serde_json = { version = "1", features = ["float_roundtrip"] }
+# Pure-Rust SHA-256 for the native W4 self-check hash generator example
+# (host-only; never compiled into the wasm cdylib).
+sha2 = "0.10"
+
+[lints]
+workspace = true

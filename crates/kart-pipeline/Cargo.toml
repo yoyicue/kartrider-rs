@@ -1,0 +1,14 @@
+[package]
+name = "kart-pipeline"
+version = "0.1.0"
+edition.workspace = true
+description = "Batch .1s → glTF/USDA converter with theme-texture association + coverage (parity with C# Kart1sToGltf.Pipeline)"
+
+[dependencies]
+kart-fmt = { path = "../kart-fmt" }
+kart-gltf = { path = "../kart-gltf" }
+kart-rho = { path = "../kart-rho" }
+kart-usd = { path = "../kart-usd" }
+
+[lints]
+workspace = true

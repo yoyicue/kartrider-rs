@@ -1,0 +1,88 @@
+[package]
+name = "kart-physics"
+version = "0.1.0"
+edition.workspace = true
+description = "Deterministic Rust port of the KartRider vehicle physics engine (scripts/kartrider_vehicle_engine.py)"
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"], optional = true }
+# float_roundtrip: correctly-rounded JSON float parsing — required for the
+# parity harness, where Python-emitted shortest-repr decimals must land on
+# the identical f64 bit pattern.
+serde_json = { version = "1", features = ["float_roundtrip"], optional = true }
+
+[features]
+serde = ["dep:serde", "dep:serde_json"]
+
+# Kept as dev-dependencies as well so the pre-existing `scheduler_trace`
+# example (and its parity script, which runs cargo without `--features`)
+# keeps building unconditionally.
+[dev-dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }
+
+[[example]]
+name = "integrators_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "ground_producers_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "state_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "boost_triggers_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "branch_step_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "engine_gnd_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "raw_frame_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "control_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "collision_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "m1_abyss_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "rail_capture_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "rail_step_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "moving_reset_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "m2_rail_cycle_trace"
+required-features = ["serde"]
+
+[[example]]
+name = "network_correction_trace"
+required-features = ["serde"]
+
+[lints]
+workspace = true

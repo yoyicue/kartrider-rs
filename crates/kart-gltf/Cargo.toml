@@ -1,0 +1,18 @@
+[package]
+name = "kart-gltf"
+version = "0.1.0"
+edition.workspace = true
+description = "Minimal glTF 2.0 / GLB writer for KartRider asset export (parity with C# Kart1sToGltf)"
+
+[dependencies]
+kart-fmt = { path = "../kart-fmt" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+glam = "0.29"
+png = "0.17"
+
+[dev-dependencies]
+kart-rho = { path = "../kart-rho" }
+
+[lints]
+workspace = true

@@ -1,0 +1,20 @@
+[workspace]
+resolver = "2"
+members = ["crates/kart-rho", "crates/kart-fmt", "crates/kart-render", "crates/kart-gltf", "crates/kart-pipeline", "crates/kart-usd", "crates/kart-auditor", "crates/kart-viewer", "crates/kart-autoprobe", "crates/kart-physics", "crates/kart-track-world", "crates/kart-wasm", "xtask"]
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/yoyicue/kartrider-rs"
+
+# Shared lint policy — CI runs `cargo clippy -- -D warnings`. A couple of lints
+# are relaxed because large parts of this codebase are *faithful transliterations*
+# of the C#/SSE2 reference, where index-based loops and the original init
+# signatures are intentional (and validated byte-for-byte).
+[workspace.lints.clippy]
+needless_range_loop = "allow"
+too_many_arguments = "allow"
+
+[profile.release]
+opt-level = 3
+lto = "thin"

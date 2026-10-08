@@ -1,0 +1,8 @@
+/target
+/.pytest_cache
+**/.muxmux
+.DS_Store
+pipeline-rs/
+pipeline/
+audit-rs/
+*.log
